@@ -1,9 +1,9 @@
-# 🌸 UltraUserBot - Telegram's Anime Vibe Raid King 🤖💥
+# 🌸 UltraUserBot - Telegram's xtecVibe Raid King
 
 ![UltraUserBot Banner](https://i.imgur.com/G1mQF9O.png)
 
 <p align="center">
-  <b>From Shayari to Hack, Magic to Raid — All-in-One Anime-Powered Telegram UserBot 💫</b><br>
+  <b>From Powered Telegram UserBot 💫</b><br>
   <i>Rule the chats like an overpowered MC 💣 Built with Pyrogram, designed to dominate!</i>
 </p>
 
@@ -25,16 +25,16 @@
 - 🎴 Shayari & Sad Lines Generator
 - 🖼️ Carbon Code Image Creator
 - 💤 AFK with Auto Return
-- 😂 Looping Laugh Animation
+- Looping Laugh Animation
 - 💥 Spam Commands (Text Flood)
-- 🤬 Gali Raid (Handle with Care 😅)
+- 🤬 Gali Raid (Handle with Care 
 - 🔧 Help Menu with All Commands
 - 📶 Ping to Check Bot Speed
 - 🔥 Alive with Your Bot Branding
 
 ---
 
-## 💻 Deploy Like a Pro
+##  Deploy Like a Pro
 
 ### 🔷 Render (Recommended)
 
@@ -108,27 +108,19 @@ BOT_NAME=UltraUserBot
 
 > 🎯 [Generate SESSION using @StringSessionGenBot](https://t.me/StringSessionGenBot)
 
----
-
-## 🎌 Weeb Vibes Activated
-
-- ⚔️ Inspired by Anime MC Energy
-- 🐉 Shayari x Raid Combo Power
-- 💥 Auto-Pilot PM Filtering
-- 🎯 Works on Termux, VPS, or Cloud
 
 ---
 
 ## 💬 Connect
 
-- Telegram: [@YourUsername](https://t.me/YourUsername)
-- GitHub: [github.com/your-username](https://github.com/your-username)
+- Telegram: [@YourUsername](https://t.me/kurupdevs)
+- GitHub: [github.com/your-devgramopz(https://github.com/your-username)
 
 ---
 
 <p align="center">
-  <b>Made with ❤️ by Desi Hackers. Rule Telegram like a Pro!</b><br>
-  <i>Anime meets Tech. UltraUserBot ready for WAR 🔥</i>
+  <b>Made with ❤️ by black ass nigga. Rule Telegram like a Pro!</b><br>
+  <i>Anime meets Tech. krupUserBot ready for spammmm 🔥</i>
 </p>
 )
 
