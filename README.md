@@ -1,18 +1,19 @@
 <div align="center">
 
-<!-- ==================== TITLE CARD ==================== -->
-<img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=900&size=48&duration=2500&pause=1200&color=00F5FF&center=true&vCenter=true&width=700&height=90&lines=KURUPUSERBOT;ULTRA+FAST+•+AI+POWERED;HARD+CORE+USERBOT" alt="KURUPUSERBOT" />
+# ⚡ KURUPUSERBOT ⚡
+
+### 🔥 HARD • FAST • AI POWERED 🔥
+
+<br>
+
+<img src="https://img.shields.io/badge/%E2%9A%A1_KURUPUSERBOT-00F5FF?style=for-the-badge&labelColor=0D1117&logo=lightning&logoColor=00F5FF" height="45"/>
+<img src="https://img.shields.io/badge/AI_POWERED-00FF9D?style=for-the-badge&labelColor=0D1117"/>
+<img src="https://img.shields.io/badge/HARD_STYLE-FF00EA?style=for-the-badge&labelColor=0D1117"/>
 
 <br><br>
 
-<img src="https://img.shields.io/badge/%E2%9A%A1_KURUPUSERBOT-%E2%9A%A1-00f5ff?style=for-the-badge&labelColor=0d1117" height="40"/>
-<img src="https://img.shields.io/badge/AI_POWERED-00ff9d?style=for-the-badge&labelColor=0d1117"/>
-<img src="https://img.shields.io/badge/HARD_STYLE-ff00ea?style=for-the-badge&labelColor=0d1117"/>
-
-<br><br>
-
-### 🔥 **Simple • Fast • Lightweight • Highly Customizable**  
-### **Telegram Userbot built for speed & power**
+**A simple • fast • lightweight • highly customizable**  
+**Telegram Userbot built for speed & power**
 
 <br>
 
