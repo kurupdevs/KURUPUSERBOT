@@ -14,19 +14,37 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils import modules_help, prefix
+from utils.db import db
+from utils.scripts import restart
 
 
-@Client.on_message(filters.command(["ping", "p"], prefix) & filters.me)
-async def ping(client: Client, message: Message):
-    latency = await client.ping()
-    await message.edit(f"<b>Pong! {latency}ms</b>")
+@Client.on_message(filters.command(["sp", "setprefix"], prefix) & filters.me)
+async def setprefix(_, message: Message):
+    if len(message.command) > 1:
+        pref = message.command[1]
+        db.set("core.main", "prefix", pref)
+        await message.edit(
+            f"<b>Prefix [ <code>{pref}</code> ] is set!\nRestarting...</b>"
+        )
+        db.set(
+            "core.updater",
+            "restart_info",
+            {
+                "type": "restart",
+                "chat_id": message.chat.id,
+                "message_id": message.id,
+            },
+        )
+        restart()
+    else:
+        await message.edit("<b>The prefix must not be empty!</b>")
 
 
-modules_help["ping"] = {
-    "ping": "Check ping to Telegram servers",
+modules_help["prefix"] = {
+    "sp [prefix]": "Set custom prefix",
+    "setprefix [prefix]": "Set custom prefix",
 }

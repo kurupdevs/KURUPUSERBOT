@@ -14,19 +14,30 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import os
 
+from PIL import Image
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from utils import modules_help, prefix
 
 
-@Client.on_message(filters.command(["ping", "p"], prefix) & filters.me)
-async def ping(client: Client, message: Message):
-    latency = await client.ping()
-    await message.edit(f"<b>Pong! {latency}ms</b>")
+@Client.on_message(filters.command("setthumb", prefix) & filters.me)
+async def setthumb(_, message: Message):
+    THUMB_PATH = "downloads/thumb"
+    if message.reply_to_message:
+        if not os.path.exists(THUMB_PATH):
+            os.makedirs(THUMB_PATH)
+        new_thumb = await message.reply_to_message.download()
+        with Image.open(new_thumb) as img:
+            if img.format in ["PNG", "JPG", "JPEG"]:
+                new_path = os.path.join(THUMB_PATH, "thumb.jpg")
+                os.rename(new_thumb, new_path)
+                await message.edit_text("Thumbnail set successfully!")
+    else:
+        await message.edit_text("Kindly reply to a PHOTO Entity!")
+        return
 
 
-modules_help["ping"] = {
-    "ping": "Check ping to Telegram servers",
-}
+modules_help["thumb"] = {"setthumb [reply_to_photo]*": "set your own custom thumbnail"}

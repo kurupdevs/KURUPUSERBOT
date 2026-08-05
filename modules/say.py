@@ -10,10 +10,13 @@
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#  GNU General Public License for more details.
 
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -21,12 +24,14 @@ from pyrogram.types import Message
 from utils import modules_help, prefix
 
 
-@Client.on_message(filters.command(["ping", "p"], prefix) & filters.me)
-async def ping(client: Client, message: Message):
-    latency = await client.ping()
-    await message.edit(f"<b>Pong! {latency}ms</b>")
+@Client.on_message(filters.command(["say", "s"], prefix) & filters.me)
+async def say(_, message: Message):
+    if len(message.command) == 1:
+        return
+    command = " ".join(message.command[1:])
+    await message.edit(f"<code>{command}</code>")
 
 
-modules_help["ping"] = {
-    "ping": "Check ping to Telegram servers",
+modules_help["say"] = {
+    "say [command]*": "Send message that won't be interpreted by userbot",
 }
