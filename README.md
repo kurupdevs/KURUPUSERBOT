@@ -1,241 +1,111 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=38&pause=1000&color=00F7FF&center=true&vCenter=true&width=900&lines=⚡+KURUPUSERBOT+⚡;🔥+NEXT+GEN+TELEGRAM+USERBOT+🔥;💎+FAST+•+SMART+•+POWERFUL+💎" />
+# ⚡ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=00F5FF&center=true&vCenter=true&width=600&height=80&lines=KURUPUSERBOT;ULTRA+FAST+USERBOT;AI+POWERED" alt="Typing SVG" /> ⚡
 
 <br>
 
-<img src="https://raw.githubusercontent.com/kurupdevs/Test/main/IMG_20260709_011714_699.webp" alt="KURUPUSERBOT" width="100%">
+<img src="https://raw.githubusercontent.com/kurupdevs/Test/main/IMG_20260709_011714_699.webp" alt="KURUPUSERBOT" width="100%" style="border-radius: 20px; box-shadow: 0 0 40px #00f5ff;">
 
 <br><br>
 
-<h1>⚡ KURUPUSERBOT ⚡</h1>
-
-<h3>🔥 The Ultimate AI Powered Telegram Userbot 🔥</h3>
-
-<p>
-Fast • Lightweight • Powerful • Fully Customizable
-</p>
+### 🔥 **A simple • fast • lightweight • highly customizable**  
+### **Telegram Userbot built for speed & power**
 
 <br>
 
-<a href="https://github.com/kurupdevs/KURUPUSERBOT">
-<img src="https://img.shields.io/badge/Version-v4.0-00f7ff?style=for-the-badge&logo=github">
-</a>
-
-<a href="https://github.com/kurupdevs/KURUPUSERBOT">
-<img src="https://img.shields.io/badge/Maintained-YES-00ff99?style=for-the-badge&logo=github">
-</a>
-
-<a href="https://github.com/kurupdevs/KURUPUSERBOT/stargazers">
-<img src="https://img.shields.io/github/stars/kurupdevs/KURUPUSERBOT?style=for-the-badge&color=ff00ff">
-</a>
-
-<a href="https://github.com/kurupdevs/KURUPUSERBOT/network/members">
-<img src="https://img.shields.io/github/forks/kurupdevs/KURUPUSERBOT?style=for-the-badge&color=9d00ff">
-</a>
-
-<a href="https://github.com/kurupdevs/KURUPUSERBOT/blob/main/LICENSE">
-<img src="https://img.shields.io/badge/License-GPL--3.0-ff007f?style=for-the-badge">
-</a>
-
-<br><br>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&height=120&color=0:00f7ff,50:ff00ff,100:7f00ff&text=WELCOME%20TO%20KURUPUSERBOT&fontSize=35&fontColor=ffffff&animation=fadeIn"/>
+[![Maintained](https://img.shields.io/badge/Maintained%3F-Yes-00ff9d?style=for-the-badge&logo=github&logoColor=white)](https://github.com/kurupdevs/KURUPUSERBOT)
+[![Last Commit](https://img.shields.io/github/last-commit/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=git&color=00d4ff)](https://github.com/kurupdevs/KURUPUSERBOT)
+[![Stars](https://img.shields.io/github/stars/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=github&color=ff00ea)](https://github.com/kurupdevs/KURUPUSERBOT/stargazers)
+[![Forks](https://img.shields.io/github/forks/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=github&color=9d00ff)](https://github.com/kurupdevs/KURUPUSERBOT/network/members)
+[![License](https://img.shields.io/badge/License-GPL--3.0-ff2d95?style=for-the-badge)](https://github.com/kurupdevs/KURUPUSERBOT/blob/main/LICENSE)
 
 </div>
 
 ---
 
-# 🌌 About
+<div align="center">
 
-> 🚀 KURUPUSERBOT is a modern Telegram Userbot packed with AI features, fun utilities, automation tools, and beautiful animations.
+## 🤖
+ AI-POWERED CAPABILITIES
 
-```diff
-+ Fast Performance
-+ Beautiful UI
-+ Easy Deployment
-+ AI Features
-+ Active Community
-+ Open Source
-```
+</div>
 
----
-
-# 🤖 AI Powered Capabilities
-
-<table>
-<tr>
-<td align="center">💬</td>
-<td><b>Text Generation</b></td>
-<td>Gemini Pro • ChatGPT • Cohere Coral</td>
-</tr>
-
-<tr>
-<td align="center">🎨</td>
-<td><b>Image Generation</b></td>
-<td>SDXL • DALL-E • Text-To-Image</td>
-</tr>
-
-<tr>
-<td align="center">⚙️</td>
-<td><b>Utilities</b></td>
-<td>Upscaling • AI Marketing • Site Search</td>
-</tr>
-</table>
+| Feature              | Models / Tools                                      |
+|----------------------|-----------------------------------------------------|
+| **Text Generation**  | Gemini Pro • ChatGPT 3.5 Turbo • Cohere Coral      |
+| **Image Generation** | SDXL • DALL-E 3 • Text-to-Image                     |
+| **Utilities**        | Image Upscaling • AI Marketer • Site Search & more |
 
 ---
-
-# ⚡ Feature Showcase
-
-```yaml
-Security:
-  ✅ PM Permit
-  ✅ Auto Approve
-  ✅ Anti Spam
-
-Fun:
-  💘 Love Raid
-  🤖 Emoji Magic
-  😂 Laugh Animation
-  😴 AFK Auto Return
-
-Utility:
-  📸 Carbon Generator
-  📊 Ping System
-  🔥 Alive Message
-  📝 Shayari Generator
-
-Extra:
-  🛠 Custom Commands
-  ⚡ Fast Response
-  🎨 Premium Output
-```
-
----
-
-# 💎 Why Choose KURUPUSERBOT?
-
-| Feature | Status |
-|----------|----------|
-| 🤖 AI Integrated | ✅ |
-| ⚡ High Speed | ✅ |
-| 🎨 Stylish Output | ✅ |
-| 🔥 Active Updates | ✅ |
-| 💘 Fun Modules | ✅ |
-| 📸 Carbon Generator | ✅ |
-| 🛠 Easy Setup | ✅ |
-
----
-
-# 🚀 One Click Deployment
 
 <div align="center">
 
-## 🔥 DEPLOY IN LESS THAN 60 SECONDS 🔥
+## 🚀 ONE-CLICK DEPLOYMENT
 
-| 🌊 KOYEB | 🟣 HEROKU | 💎 RENDER |
-|:---:|:---:|:---:|
-| [![Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/kurupdevs/KURUPUSERBOT&branch=main&name=kurupub) | [![Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kurupdevs/KURUPUSERBOT) | [![Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/kurupdevs/KURUPUSERBOT) |
+**Deploy in less than 60 seconds**
+
+| Platform | Button |
+|:--------:|:------:|
+| **Koyeb** | [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/kurupdevs/KURUPUSERBOT&branch=main&name=kurupub) |
+| **Heroku** | [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kurupdevs/KURUPUSERBOT) |
+| **Render** | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/kurupdevs/KURUPUSERBOT) |
 
 </div>
 
 ---
 
-# 📖 Documentation
-
-### 📚 Installation Guides
-
-- 🔹 Step By Step Installation
-- 🔹 Environment Variables
-- 🔹 Docker Deployment
-- 🔹 Linux Setup
-- 🔹 Windows WSL Setup
-- 🔹 Android Termux Setup
-
----
-
-# 🖥️ Termux Installation
-
-```bash
-pkg update && pkg upgrade -y
-
-pkg install git python -y
-
-git clone https://github.com/kurupdevs/KURUPUSERBOT
-
-cd KURUPUSERBOT
-
-pip install -r requirements.txt
-
-python3 main.py
-```
-
----
-
-# 📊 Live Stats
-
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=kurupdevs&show_icons=true&theme=tokyonight"/>
-
-<br>
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=kurupdevs&theme=tokyonight"/>
+## 📖 DOCUMENTATION
 
 </div>
 
----
+- **[Step-by-Step Installation](https://github.com/kurupdevs/KURUPUSERBOT/wiki)** – Full guide  
+- **Environment Variables** – All required vars explained  
+- **Docker Deployment** – Clean container setup  
+- **Local Hosting** – Linux • Windows (WSL) • Android (Termux)
 
-# 👨‍💻 Community & Support
+---
 
 <div align="center">
 
-## 🌍 JOIN THE COMMUNITY
-
-### 💬 Telegram
-[@kurupdevs](https://t.me/kurupdevs)
-
-### 💻 GitHub
-https://github.com/kurupdevs/KURUPUSERBOT
+## 💎 WHY CHOOSE KURUPUSERBOT?
 
 </div>
 
----
-
-# ⚠️ Disclaimer
-
-> [!WARNING]
->
-> This Telegram Userbot is provided for educational and personal automation purposes only.
->
-> The developer is **NOT RESPONSIBLE** for misuse, damage, account restrictions, or legal consequences.
->
-> Use responsibly and follow Telegram Terms of Service.
-
----
-
-# 📜 Licence
-
-```text
-GNU GENERAL PUBLIC LICENSE
-Version 3, 29 June 2007
-
-Copyright (C) 2007
-Free Software Foundation, Inc.
-
-Everyone is permitted to copy and distribute
-verbatim copies of this license document,
-but changing it is not allowed.
-```
+| Feature              | Status |
+|----------------------|--------|
+| DEPLOY KARKE KHUD DEKH LO 
 
 ---
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=150&section=footer&color=0:00f7ff,50:ff00ff,100:7f00ff&text=THANKS%20FOR%20VISITING&fontSize=35&fontColor=ffffff"/>
+## COMMUNITY & SUPPORT
 
-<br>
+</div>
 
-<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=24&pause=1000&color=FF00FF&center=true&width=700&lines=⭐+STAR+THE+REPOSITORY;🚀+JOIN+THE+COMMUNITY;💎+POWERED+BY+KURUPDEVS"/>
+- **Telegram** → [@kurupdevs](https://t.me/kurupdevs)  
+- **GitHub** → [kurupdevs/KURUPUSERBOT](https://github.com/kurupdevs/KURUPUSERBOT)
+
+---
+
+<div align="center">
+
+## ⚠️ DISCLAIMER
+
+</div>
+
+> This Telegram Userbot is provided **as-is**.  
+> Use it entirely at your own risk.  
+> The developer is **not responsible** for any account ban, misuse, or legal issues.  
+> Follow Telegram’s Terms of Service.
+
+---
+
+<div align="center">
+
+### 📜 LICENSE
+**GNU General Public License v3.0**
 
 </div>
