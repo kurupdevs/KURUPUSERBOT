@@ -1,0 +1,10 @@
+services:
+  kurupuserbot:
+    build: .
+    restart: unless-stopped
+    environment:
+      - API_ID=${API_ID}
+      - API_HASH=${API_HASH}
+    volumes:
+      - ./Kurup_Userbot.session:/app/Kurup_Userbot.session
+      - ./kuruplogs.txt:/app/kuruplogs.txt

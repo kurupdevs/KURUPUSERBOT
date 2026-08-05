@@ -1,0 +1,17 @@
+services:
+- type: worker
+  name: KurupUserbot
+  runtime: docker
+  repo: https://github.com/The-KurupTg-project/KurupUserbot
+  plan: starter
+  envVars:
+  - key: STABILITY_KEY
+    sync: false
+  - key: CLARIFAI_PAT
+    sync: false
+  - key: .env
+    sync: false
+  region: oregon
+  dockerContext: .
+  dockerfilePath: ./Dockerfile
+version: "1"
