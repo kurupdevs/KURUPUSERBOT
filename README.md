@@ -4,9 +4,9 @@
 
 <br><br>
 
-# <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=00F5FF&center=true&vCenter=true&width=600&height=70&lines=⚡+KURUPUSERBOT+⚡;NEON+POWERED+USERBOT" alt="Typing SVG" />
+# <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=00F5FF&center=true&vCenter=true&SUPER600&height=70&lines=⚡+KURUPUSERBOT+⚡;NIGGAPOWERED+USERBOT" alt="Typing SVG" />
 
-<br>
+<bbr
 
 ### <span style="color:#00F5FF; text-shadow: 0 0 10px #00F5FF, 0 0 20px #00F5FF;">A simple • fast • lightweight • highly customizable</span><br>
 ### <span style="color:#FF00EA; text-shadow: 0 0 10px #FF00EA, 0 0 20px #FF00EA;">Telegram Userbot</span>
@@ -29,15 +29,6 @@
 
 <div align="center">
 
-## 🤖 AI-Powered Capabilities
-
-</div>
-
-| Feature              | Models / Tools                          |
-|----------------------|-----------------------------------------|
-| **Text Generation**  | Gemini Pro • ChatGPT 3.5 Turbo • Cohere Coral |
-| **Image Generation** | SDXL • DALL·E 3 • Text-to-Image         |
-| **Utility**          | Image Upscaling • AI Marketer • Site-Search & more |
 
 ---
 
@@ -74,7 +65,7 @@ Don’t know how to start? Check the guides:
 
 <div align="center">
 
-## 👨🏻‍💻 Community & Support
+##  Community & Support
 
 </div>
 
@@ -85,7 +76,7 @@ Don’t know how to start? Check the guides:
 
 <div align="center">
 
-## ⚠️ Disclaimer
+##  Disclaimer 
 
 </div>
 
