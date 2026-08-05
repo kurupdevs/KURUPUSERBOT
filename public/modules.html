@@ -1,0 +1,12 @@
+<div class="modules-container">
+    <h2>🧩 Modules</h2>
+    <p>Built-in: {{builtin_count}} | Custom: {{custom_count}}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:20px;">
+    % for module in modules:
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;">
+            <span style="font-weight:600;color:#58a6ff;">{{module['name']}}</span>
+            <span style="float:right;font-size:11px;color:#8b949e;background:#21262d;padding:2px 8px;border-radius:12px;">{{module['type']}}</span>
+        </div>
+    % end
+    </div>
+</div>
