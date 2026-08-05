@@ -1,62 +1,93 @@
 <div align="center">
 
-# ⚡ KURUPUSERBOT ⚡
-
 <img src="https://raw.githubusercontent.com/kurupdevs/Test/main/IMG_20260709_011714_699.webp" alt="KURUPUSERBOT" width="100%">
 
+<br><br>
+
+# <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=00F5FF&center=true&vCenter=true&width=600&height=70&lines=⚡+KURUPUSERBOT+⚡;NEON+POWERED+USERBOT" alt="Typing SVG" />
+
 <br>
 
-**A simple • fast • lightweight • highly customizable Telegram Userbot**
+### <span style="color:#00F5FF; text-shadow: 0 0 10px #00F5FF, 0 0 20px #00F5FF;">A simple • fast • lightweight • highly customizable</span><br>
+### <span style="color:#FF00EA; text-shadow: 0 0 10px #FF00EA, 0 0 20px #FF00EA;">Telegram Userbot</span>
 
 <br>
 
-[![Maintained](https://img.shields.io/badge/Maintained%3F-Yes-00ff9d?style=for-the-badge&logo=github)](https://github.com/kurupdevs/KURUPUSERBOT)
-[![Last Commit](https://img.shields.io/github/last-commit/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=git&color=00d4ff)](https://github.com/kurupdevs/KURUPUSERBOT)
-[![Stars](https://img.shields.io/github/stars/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=github&color=ff00ea)](https://github.com/kurupdevs/KURUPUSERBOT/stargazers)
-[![Forks](https://img.shields.io/github/forks/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=github&color=9d00ff)](https://github.com/kurupdevs/KURUPUSERBOT/network/members)
-[![License](https://img.shields.io/badge/License-GPL--3.0-pink?style=for-the-badge)](https://github.com/kurupdevs/KURUPUSERBOT/blob/main/LICENSE)
+[![Maintained](https://img.shields.io/badge/Maintained%3F-Yes-00ff9d?style=for-the-badge&logo=github&logoColor=white)](https://github.com/kurupdevs/KURUPUSERBOT)
+[![Last Commit](https://img.shields.io/github/last-commit/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=git&color=00d4ff&logoColor=white)](https://github.com/kurupdevs/KURUPUSERBOT)
+[![Stars](https://img.shields.io/github/stars/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=github&color=ff00ea&logoColor=white)](https://github.com/kurupdevs/KURUPUSERBOT/stargazers)
+[![Forks](https://img.shields.io/github/forks/kurupdevs/KURUPUSERBOT?style=for-the-badge&logo=github&color=9d00ff&logoColor=white)](https://github.com/kurupdevs/KURUPUSERBOT/network/members)
+[![License](https://img.shields.io/badge/License-GPL--3.0-ff69b4?style=for-the-badge&logoColor=white)](https://github.com/kurupdevs/KURUPUSERBOT/blob/main/LICENSE)
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47ce8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="400">
 
 </div>
 
 ---
 
-### 🤖 AI-Powered Capabilities
+<div align="center">
 
-- **Text Gen** → Gemini Pro • ChatGPT 3.5 Turbo • Cohere Coral  
-- **Image Gen** → SDXL • DALL-E 3 • Text-to-Image  
-- **Utility** → Image Upscaling • AI Marketer • Site-Search & more  
+## 🤖 AI-Powered Capabilities
+
+</div>
+
+| Feature              | Models / Tools                          |
+|----------------------|-----------------------------------------|
+| **Text Generation**  | Gemini Pro • ChatGPT 3.5 Turbo • Cohere Coral |
+| **Image Generation** | SDXL • DALL·E 3 • Text-to-Image         |
+| **Utility**          | Image Upscaling • AI Marketer • Site-Search & more |
 
 ---
+
+<div align="center">
 
 ## 🚀 Quick Deployment
 
-Choose your preferred platform:
+**Choose your preferred platform**
 
-| Koyeb | Heroku | Render |
-|:---:|:---:|:---:|
-| [![Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/kurupdevs/KURUPUSERBOT&branch=main&name=kurupub) | [![Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kurupdevs/KURUPUSERBOT) | [![Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/kurupdevs/KURUPUSERBOT) |
+| Platform | Deploy |
+|:--------:|:------:|
+| **Koyeb** | [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/kurupdevs/KURUPUSERBOT&branch=main&name=kurupub) |
+| **Heroku** | [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kurupdevs/KURUPUSERBOT) |
+| **Render** | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/kurupdevs/KURUPUSERBOT) |
+
+</div>
 
 ---
 
+<div align="center">
+
 ## 📖 Documentation
+
+</div>
 
 Don’t know how to start? Check the guides:
 
 - **[Step-by-Step Installation](https://github.com/kurupdevs/KURUPUSERBOT/wiki)** – Get up and running in minutes  
 - **Environment Variables** – Detailed info on necessary vars  
 - **Docker Setup** – Containerized deployment  
-- **Local Hosting** – Linux • Windows (WSL) • Android (Termux)  
+- **Local Hosting** – Linux • Windows (WSL) • Android (Termux)
 
 ---
+
+<div align="center">
 
 ## 👨🏻‍💻 Community & Support
 
-- Telegram: [@kurupdevs](https://t.me/kurupdevs)  
-- GitHub: [kurupdevs/KURUPUSERBOT](https://github.com/kurupdevs/KURUPUSERBOT)  
+</div>
+
+- Telegram → [@kurupdevs](https://t.me/kurupdevs)  
+- GitHub → [kurupdevs/KURUPUSERBOT](https://github.com/kurupdevs/KURUPUSERBOT)
 
 ---
 
+<div align="center">
+
 ## ⚠️ Disclaimer
+
+</div>
 
 > The use of this Telegram Userbot is entirely at your own risk.  
 > The developer is **not responsible** for any misuse, damage, or legal consequences.  
@@ -64,12 +95,8 @@ Don’t know how to start? Check the guides:
 
 ---
 
+<div align="center">
+
 ## 📜 Licence
 
-```plaintext
-GNU GENERAL PUBLIC LICENSE
-Version 3, 29 June 2007
-
-Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
-Everyone is permitted to copy and distribute verbatim copies
-of this license document, but changing it is not allowed.
+</div>
