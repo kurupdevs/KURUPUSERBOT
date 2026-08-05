@@ -1,10 +1,15 @@
 <div align="center">
 
+# ⚡ <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=00F5FF&center=true&vCenter=true&width=600&height=80&lines=KURUPUSERBOT;ULTRA+FAST+USERBOT;AI+POWERED" alt="Typing SVG" /> ⚡
+
 <br>
 
-<img src="https://raw.githubusercontent.com/kurupdevs/Test/main/IMG_20260709_011714_699.webp" alt="KURUPUSERBOT" width="100%" style="border-radius: 20px; box-shadow: 0 0 40px
+<img src="https://raw.githubusercontent.com/kurupdevs/Test/main/IMG_20260709_011714_699.webp" alt="KURUPUSERBOT" width="100%" style="border-radius: 20px; box-shadow: 0 0 40px #00f5ff;">
 
 <br><br>
+
+### 🔥 **A simple • fast • lightweight • highly customizable**  
+### **Telegram Userbot built for speed & power**
 
 <br>
 
@@ -20,6 +25,8 @@
 
 <div align="center">
 
+## 🤖 AI-POWERED CAPABILITIES
+
 </div>
 
 | Feature              | Models / Tools                                      |
@@ -31,6 +38,8 @@
 ---
 
 <div align="center">
+
+## 🚀 ONE-CLICK DEPLOYMENT
 
 **Deploy in less than 60 seconds**
 
@@ -46,16 +55,20 @@
 
 <div align="center">
 
+## 📖 DOCUMENTATION
+
 </div>
 
-- **[Step-by-Step Installation](https://github.com/kurupdevs/KURUPUSERBOT/wiki)** – Full guide
-- **Environment Variables** – All required vars explained
-- **Docker Deployment** – Clean container setup
+- **[Step-by-Step Installation](https://github.com/kurupdevs/KURUPUSERBOT/wiki)** – Full guide  
+- **Environment Variables** – All required vars explained  
+- **Docker Deployment** – Clean container setup  
 - **Local Hosting** – Linux • Windows (WSL) • Android (Termux)
 
 ---
 
 <div align="center">
+
+## 💎 WHY CHOOSE KURUPUSERBOT?
 
 </div>
 
@@ -73,26 +86,31 @@
 
 <div align="center">
 
+## 👨🏻‍💻 COMMUNITY & SUPPORT
+
 </div>
 
-- **Telegram** → [@kurupdevs](https://t.me/kurupdevs)
+- **Telegram** → [@kurupdevs](https://t.me/kurupdevs)  
 - **GitHub** → [kurupdevs/KURUPUSERBOT](https://github.com/kurupdevs/KURUPUSERBOT)
 
 ---
 
 <div align="center">
 
+## ⚠️ DISCLAIMER
+
 </div>
 
-> This Telegram Userbot is provided **as-is**.
-> Use it entirely at your own risk.
-> The developer is **not responsible** for any account ban, misuse, or legal issues.
+> This Telegram Userbot is provided **as-is**.  
+> Use it entirely at your own risk.  
+> The developer is **not responsible** for any account ban, misuse, or legal issues.  
 > Follow Telegram’s Terms of Service.
 
 ---
 
 <div align="center">
 
+### 📜 LICENSE
 **GNU General Public License v3.0**
 
 </div>
