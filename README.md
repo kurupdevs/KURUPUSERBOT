@@ -3,7 +3,7 @@
 </p>
 <br><br>
 
-# <img src="https://readme-typing-svg.herokuapp.com?font=Black+Ops+One&size=48&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=620&height=80&lines=⚡+KURUPUSERBOT+⚡;Powered+Userbot" alt="Typing SVG" />
+# <img src="https://readme-typing-svg.herokuapp.com?font=Black+Ops+One&size=48&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=620&height=80&lines=⚡+KURUPUSERBOT+🪅; destroyer+Userbot" alt="Typing SVG" />
 
 <br>
 
