@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/kurupdevs/Test/main/IMG_20260709_011714_699.webp" alt="KURUPUSERBOT" width="100%">
+<img src="[https://github.com/kurupdevs/Test27/blob/main/IMG_20260809_133756_941.jpg](https://github.com/kurupdevs/Test27/blob/main/IMG_20260809_133756_941.jpg)" alt="KURUPUSERBOT" width="100%">
 
 <br><br>
 
