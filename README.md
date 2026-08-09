@@ -11,12 +11,6 @@
 ### <span style="color:#C62828; font-weight:800; text-shadow: 0 0 8px #C6282840; letter-spacing:1px;">Telegram Userbot</span>
 <br>
 
-### <span style="color:#00C853; font-weight:900; font-size:19px; letter-spacing:2px; text-shadow: 0 0 14px #00C85390, 0 0 4px #00C853;">A simple • fast • lightweight • highly customizable</span><br>
-### <span style="color:#C62828; font-weight:900; font-size:22px; letter-spacing:3.5px; text-shadow: 0 0 16px #C6282890, 0 0 5px #C62828;">Telegram Userbot</span>
-<bbr
-
-### <span style="color:#00F5FF; text-shadow: 0 0 10px #00F5FF, 0 0 20px #00F5FF;">A simple • fast • lightweight • highly customizable</span><br>
-### <span style="color:#FF00EA; text-shadow: 0 0 10px #FF00EA, 0 0 20px #FF00EA;">Telegram Userbot</span>
 
 <br>
 
