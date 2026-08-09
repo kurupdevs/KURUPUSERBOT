@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="[https://github.com/kurupdevs/Test27/blob/main/IMG_20260809_133756_941.jpg](https://github.com/kurupdevs/Test27/blob/main/IMG_20260809_133756_941.jpg)" alt="KURUPUSERBOT" width="100%">
+<img src="[https://raw.githubusercontent.com/kurupdevs/Test27/main/IMG_20260809_133756_941.jpg](https://github.com/kurupdevs/Test27/blob/main/IMG_20260809_133756_941.jpg)" alt="KURUPUSERBOT" width="100%">
 
 <br><br>
 
@@ -69,7 +69,7 @@ Don’t know how to start? Check the guides:
 
 </div>
 
-- Telegram → [@kurupdevs](https://t.me/kurupdevs)  
+- Telegram → [@deepthrift](https://t.me/kurupdevs)  
 - GitHub → [kurupdevs/KURUPUSERBOT](https://github.com/kurupdevs/KURUPUSERBOT)
 
 ---
