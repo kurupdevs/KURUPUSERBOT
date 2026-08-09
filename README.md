@@ -3,8 +3,12 @@
 </p>
 <br><br>
 
-# <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=600&height=70&lines=⚡+KURUPUSERBOT+⚡;Powered+Userbot" alt="Typing SVG" />
+# <img src="https://readme-typing-svg.herokuapp.com?font=Black+Ops+One&size=48&duration=3000&pause=1000&color=00C853&center=true&vCenter=true&width=620&height=80&lines=⚡+KURUPUSERBOT+⚡;Powered+Userbot" alt="Typing SVG" />
 
+<br>
+
+### <span style="color:#00C853; font-weight:800; text-shadow: 0 0 8px #00C85340; letter-spacing:1px;">A simple • fast • lightweight • highly customizable</span><br>
+### <span style="color:#C62828; font-weight:800; text-shadow: 0 0 8px #C6282840; letter-spacing:1px;">Telegram Userbot</span>
 <br>
 
 ### <span style="color:#00C853; text-shadow: 0 0 8px #00C85340;">A simple • fast • lightweight • highly customizable</span><br>
