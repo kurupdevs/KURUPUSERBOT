@@ -1,7 +1,6 @@
-<div align="center">
-
-<img src="[https://raw.githubusercontent.com/kurupdevs/Test27/main/IMG_20260809_133756_941.jpg](https://raw.githubusercontent.com/kurupdevs/Test27/main/IMG_20260809_133756_941.jpg)" alt="KURUPUSERBOT" width="100%">
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kurupdevs/Test27/main/IMG_20260809_133756_941.jpg" width="100%">
+</p>
 <br><br>
 
 # <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=42&duration=3000&pause=1000&color=00F5FF&center=true&vCenter=true&SUPER600&height=70&lines=⚡+KURUPUSERBOT+⚡;NIGGAPOWERED+USERBOT" alt="Typing SVG" />
