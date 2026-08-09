@@ -84,7 +84,7 @@
       "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
     },
     {
-      "url": "https://github.com/The-KurupTg-project/heroku-buildpack-yt-dlp"
+      "url": "https://github.com/kurupdevs/KURUPUSERBOT/heroku-buildpack-yt-dlp"
     }
   ]
 }
