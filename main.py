@@ -15,7 +15,7 @@
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # /// script
-# requires-python = ">=3.11"  # no delay default
+# requires-python = ">=3.11"
 # dependencies = [
 #     "pip",
 #     "pyrofork==2.3.69",
@@ -32,6 +32,13 @@
 #     "bottle",
 # ]
 # ///
+
+"""KurupUserbot - Main Application Entry Point
+
+Core module that initializes the Pyrogram client, manages module loading,
+handles restart/update flows, and runs the web UI server.
+"""
+
 import asyncio
 import logging
 import os
@@ -48,31 +55,37 @@ from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.raw.functions.account import DeleteAccount, GetAuthorizations
 
 from app import bottle_app
-from utils import config, gitrepo, userbot_version  # type: ignore
+from utils import config, gitrepo, userbot_version
 from utils.db import db
 from utils.module import ModuleManager
 from utils.rentry import rentry_cleanup_job
 from utils.scripts import load_module, restart
 
-SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))  # Ensure proper handling
+# Determine the script path and set as working directory
+SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 if SCRIPT_PATH != os.getcwd():
     os.chdir(SCRIPT_PATH)
 
+# Common client parameters
 common_params = {
     "api_id": config.api_id,
     "api_hash": config.api_hash,
-    "hide_password": True,  # default enabled
+    "hide_password": True,
     "workdir": SCRIPT_PATH,
     "app_version": userbot_version,
     "device_model": f"KurupUserbot @ {gitrepo.head().decode('utf-8')[:7]}",
     "system_version": platform.version() + " " + platform.machine(),
-    "sleep_threshold": 30,  # type: int
+    "sleep_threshold": 30,
     "test_mode": config.test_server,
     "parse_mode": ParseMode.HTML,
 }
 
 
 class AsyncWSGIRefServer(ServerAdapter):
+    """Async WSGI reference server based on Bottle's ServerAdapter.
+    
+    Provides non-blocking HTTP serving for the web dashboard.
+    """
     def run(self, handler):
         class FixedHandler(WSGIRequestHandler):
             def log_message(inner_self, format, *args):
@@ -82,7 +95,7 @@ class AsyncWSGIRefServer(ServerAdapter):
         handler_cls = self.options.get("handler_class", FixedHandler)
         server_cls = self.options.get("server_class", WSGIServer)
 
-        if ":" in self.host:  # Fix wsgiref for IPv6 addresses.
+        if ":" in self.host:  # Fix wsgiref for IPv6 addresses
             if getattr(server_cls, "address_family") == socket.AF_INET:
                 class IPv6Server(server_cls):
                     address_family = socket.AF_INET6
@@ -95,10 +108,12 @@ class AsyncWSGIRefServer(ServerAdapter):
             self.srv.server_close()
 
     def shutdown(self):
+        """Gracefully shutdown the web server."""
         if hasattr(self, "srv"):
             self.srv.shutdown()
 
 
+# Configure session string if available
 if config.session_string:
     common_params["session_string"] = config.session_string
 
@@ -106,8 +121,9 @@ app = Client("my_account", **common_params)
 
 
 async def load_missing_modules():
+    """Download and install any custom modules that are missing locally."""
     all_modules = db.get("custom.modules", "allModules", [])
-    if not all_modules:  # Handle result
+    if not all_modules:
         return
 
     custom_modules_path = f"{SCRIPT_PATH}/modules/custom_modules"
@@ -124,6 +140,7 @@ async def load_missing_modules():
     except Exception:
         logging.error("Failed to fetch custom modules list")
         return
+    
     modules_dict = {
         line.split("/")[-1].split()[0]: line.strip() for line in f.splitlines()
     }
@@ -143,6 +160,11 @@ async def load_missing_modules():
 
 
 async def main():
+    """Main entry point for KurupUserbot.
+    
+    Sets up logging, starts the Pyrogram client, loads modules,
+    and runs the web UI alongside the bot.
+    """
     logging.basicConfig(
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         handlers=[logging.FileHandler("kuruplogs.txt"), logging.StreamHandler()],
@@ -154,9 +176,7 @@ async def main():
         await app.start()
     except sqlite3.OperationalError as e:
         if str(e) == "database is locked" and os.name == "posix":
-            logging.warning(
-                "Session file is locked. Trying to kill blocking process..."
-            )
+            logging.warning("Session file is locked. Trying to kill blocking process...")
             subprocess.run(["fuser", "-k", "my_account.session"], check=True)
             restart()
         raise
@@ -203,9 +223,10 @@ async def main():
         try:
             await app.edit_message_text(info["chat_id"], info["message_id"], text)
         except errors.RPCError:
-            pass  # intentionally suppressing this exception
+            pass
         db.remove("core.updater", "restart_info")
 
+    # Initialize session killer tracking
     if db.get("core.sessionkiller", "enabled", False):
         db.set(
             "core.sessionkiller",
@@ -218,6 +239,7 @@ async def main():
 
     logging.info("KurupUserbot started!")
 
+    # Start background tasks
     cleanup_task = app.loop.create_task(rentry_cleanup_job())
     server = AsyncWSGIRefServer(host="0.0.0.0", port=config.port)
     webui_task = asyncio.create_task(asyncio.to_thread(server.run, bottle_app))
