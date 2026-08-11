@@ -33,11 +33,7 @@ def get_builtin_modules():
     modules = []
     modules_path = f"{BASE_PATH}/modules"
     for f in os.listdir(modules_path):
-        if (
-            f.endswith(".py")
-            and not f.startswith("_")
-            and f not in ("loader.py", "__init__.py")
-        ):
+        if f.endswith(".py") and not f.startswith("_") and f not in ("loader.py", "__init__.py"):
             modules.append({"name": f[:-3], "type": "builtin"})
     return modules
 
@@ -61,7 +57,6 @@ def render_page(content_name, page, **vars):
         base_tpl = f.read()
     with open(os.path.join(PUBLIC_PATH, content_name)) as f:
         content_tpl = f.read()
-
     content = SimpleTemplate(content_tpl).render(**vars)
     vars["base"] = content
     vars["page"] = page
@@ -76,23 +71,7 @@ def index():
     custom = get_custom_modules()
     message = request.params.get("message", "")
     message_type = request.params.get("type", "")
-
-    return render_page(
-        "overview.html",
-        "overview",
-        uptime=stats["uptime"],
-        memory_used=stats["memory_used"],
-        memory_total=stats["memory_total"],
-        memory_percent=stats["memory_percent"],
-        cpu_percent=stats["cpu_percent"],
-        module_count=len(modules),
-        platform=stats["platform"],
-        python_version=stats["python_version"],
-        builtin_count=len(builtin),
-        custom_count=len(custom),
-        message=message,
-        message_type=message_type,
-    )
+    return render_page("overview.html", "overview", uptime=stats["uptime"], memory_used=stats["memory_used"], memory_total=stats["memory_total"], memory_percent=stats["memory_percent"], cpu_percent=stats["cpu_percent"], module_count=len(modules), platform=stats["platform"], python_version=stats["python_version"], builtin_count=len(builtin), custom_count=len(custom), message=message, message_type=message_type)
 
 
 @bottle_app.get("/modules")
@@ -102,16 +81,7 @@ def modules_page():
     custom = get_custom_modules()
     message = request.params.get("message", "")
     message_type = request.params.get("type", "")
-
-    return render_page(
-        "modules.html",
-        "modules",
-        modules=modules,
-        builtin_count=len(builtin),
-        custom_count=len(custom),
-        message=message,
-        message_type=message_type,
-    )
+    return render_page("modules.html", "modules", modules=modules, builtin_count=len(builtin), custom_count=len(custom), message=message, message_type=message_type)
 
 
 @bottle_app.post("/modules/delete")
@@ -132,17 +102,9 @@ def logs():
         with open(log_file, "r") as f:
             lines = f.readlines()
             logs_content = "".join(lines[-500:]) or "No logs yet"
-
     message = request.params.get("message", "")
     message_type = request.params.get("type", "")
-
-    return render_page(
-        "logs.html",
-        "logs",
-        logs=logs_content,
-        message=message,
-        message_type=message_type,
-    )
+    return render_page("logs.html", "logs", logs=logs_content, message=message, message_type=message_type)
 
 
 @bottle_app.get("/logs/clear")
@@ -157,7 +119,6 @@ def clear_logs():
 @bottle_app.get("/api/stats")
 def api_stats():
     import json
-
     response.content_type = "application/json"
     return json.dumps(get_stats())
 
@@ -165,12 +126,10 @@ def api_stats():
 @bottle_app.get("/api/modules")
 def api_modules():
     import json
-
     response.content_type = "application/json"
     return json.dumps(get_all_modules())
 
 
 if __name__ == "__main__":
     from bottle import run
-
     run(bottle_app, host="0.0.0.0", port=5000, debug=False)
