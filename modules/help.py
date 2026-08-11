@@ -1,23 +1,8 @@
+# Help module
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-HELP_TEXT = """
-**Available Commands:**
-
-• `.afk` - Set AFK status
-• `.alive` - Check bot uptime
-• `.ping` - Check latency
-• `.spam` - Spam messages
-• `.say` - Echo message
-• `.purge` - Delete messages
-• `.shayari` - Get random shayari
-• `.help` - Show this menu
-"""
-
-
-async def setup(client: Client):
-    client.on_message(filters.command("help", prefixes=".") & filters.me)(help_handler)
-
-
-async def help_handler(client: Client, message: Message):
-    await message.edit(HELP_TEXT)
+@Client.on_message(filters.command("help"))
+async def help_command(client: Client, message: Message):
+    """Show help information."""
+    await message.reply("Available commands: /help, /ping, /afk, /alive")
