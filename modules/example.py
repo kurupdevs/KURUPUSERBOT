@@ -1,62 +1,28 @@
-#  KurupUserbot - telegram userbot
-#  Copyright (C) 2020-present Kurup Userbot Organization
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
+# Module: automatically loaded by the bot engine
+# See LICENSE for details
 
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
+import logging
 
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-from pyrogram import Client, enums, filters
+from pyrogram import filters
 from pyrogram.types import Message
 
-from utils import modules_help, prefix
-
-# if your module has packages from PyPi
-
-# from utils.scripts import import_library
-# example_1 = import_library("example_1")
-# example_2 = import_library("example_2")
-
-# import_library() will automatically install required library
-# if it isn't installed
+from config.constants import prefix
 
 
-@Client.on_message(filters.command("example_edit", prefix) & filters.me)
-async def example_edit(client: Client, message: Message):
-    try:
-        await message.edit("<code>This is an example module</code>")
-    except Exception as e:
-        await message.edit(
-            f"<code>[{e.error_code}: {enums.MessageType.TEXT}] - {e.error_details}</code>"
-        )
+# This is an example module showing the module structure pattern
+# example_command: handles the core logic for this module
+@Client.on_message(filters.command("example", prefixes=prefix) & filters.me)
+async def example_command(client, message: Message):
+    """Execute example_command with the provided parameters.
+    
+    Args:
+        *args: Variable positional arguments.
+        **kwargs: Variable keyword arguments.
+    """
+    await message.edit("This is an example module response.")
 
 
-@Client.on_message(filters.command("example_send", prefix) & filters.me)
-async def example_send(client: Client, message: Message):
-    try:
-        await client.send_message(message.chat.id, "<b>This is an example module</b>")
-    except Exception as e:
-        await message.edit(
-            f"<code>[{e.error_code}: {enums.MessageType.TEXT}] - {e.error_details}</code>"
-        )
-
-
-# This adds instructions for your module
-modules_help["example"] = {
-    "example_send": "example send",
-    "example_edit": "example edit",
-}
-
-# modules_help["example"] = { "example_send [text]": "example send" }
-#                  |            |              |        |
-#                  |            |              |        └─ command description
-#           module_name         command_name   └─ optional command arguments
-#        (only snake_case)   (only snake_case too)
+@Client.on_message(filters.command("ping", prefixes=prefix) & filters.me)
+async def example_ping(client, message: Message):
+    """A simple ping command to test responsiveness."""
+    await message.edit("Pong! 🏓")

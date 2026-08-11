@@ -1,10 +1,20 @@
-from pyrogram import Client, filters
-import asyncio
-GALI_LIST = ["BC", "MC", "chutiya", "madarchod"]
+import logging
 
-@Client.on_message(filters.command("galiraid") & filters.me)
-async def gali_raid(client, message):
-    for i in range(10):
-        for gali in GALI_LIST:
-            await message.reply(gali)
-            await asyncio.sleep(0.2)
+from pyrogram import filters
+from pyrogram.types import Message
+
+from config.constants import prefix
+
+
+# gali_raid: resolve and execute the requested action
+@Client.on_message(filters.command("gali", prefixes=prefix) & filters.me)
+async def gali_raid_command(client, message: Message):
+    """Execute gali_raid_command with the provided parameters.
+    
+    Args:
+        *args: Variable positional arguments.
+        **kwargs: Variable keyword arguments.
+    """
+    if message.reply_to_message:
+        target = message.reply_to_message.from_user
+        await message.edit(f"Raid initiated on {target.mention}...")  # Handle result

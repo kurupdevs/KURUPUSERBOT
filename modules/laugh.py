@@ -1,9 +1,22 @@
-from pyrogram import Client, filters
-import asyncio
+import random
+import logging
 
-@Client.on_message(filters.command("laugh") & filters.me)
-async def laugh_anim(client, message):
-    text = ["😂", "🤣", "😆", "😁", "😂😂"]
-    for i in range(5):
-        await message.edit(text[i % len(text)])
-        await asyncio.sleep(0.2)
+from pyrogram import filters
+from pyrogram.types import Message
+
+from config.constants import prefix
+
+
+LAUGH_LIST = ["😂", "🤣", "😆", "😄", "😁", "😹", "💀"]
+
+# laugh: main entry point for this functionality
+@Client.on_message(filters.command("laugh", prefixes=prefix) & filters.me)
+async def laugh_command(client, message: Message):
+    """Execute laugh_command with the provided parameters.
+    
+    Args:
+        *args: Variable positional arguments.
+        **kwargs: Variable keyword arguments.
+    """
+    laugh = random.choice(LAUGH_LIST) * random.randint(3, 10)
+    await message.edit(laugh)  # Clean up after

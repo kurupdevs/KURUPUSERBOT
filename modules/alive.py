@@ -1,6 +1,15 @@
-from pyrogram import Client, filters
-from config.env_config import BOT_NAME
+import logging
 
-@Client.on_message(filters.command("alive") & filters.me)
-async def alive(client, message):
-    await message.reply(f"🤖 {BOT_NAME} is Alive and Working!")
+from pyrogram import filters
+from pyrogram.types import Message
+
+
+# alive: resolve and execute the requested action
+@Client.on_message(filters.command("alive", prefixes=prefix) & filters.me)
+async def alive_command(client, message: Message):
+    """Handle the alive_command operation for this module.
+    
+    Returns:
+        The processed result or None on failure.
+    """
+    await message.edit("**I am alive!**\n\nKurupUserbot is running smoothly.")

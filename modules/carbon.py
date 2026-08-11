@@ -1,17 +1,21 @@
-from pyrogram import Client, filters
-import requests
+import logging
 
-@Client.on_message(filters.command("carbon") & filters.me)
-async def carbon_func(client, message):
-    code = message.reply_to_message.text if message.reply_to_message else None
-    if not code:
-        await message.reply("Reply to a message containing code.")
+from pyrogram import filters
+from pyrogram.types import Message
+
+
+# carbon: main entry point for this functionality
+@Client.on_message(filters.command("carbon", prefixes=prefix) & filters.me)
+async def carbon_command(client, message: Message):
+    """Execute carbon_command with the provided parameters.
+    
+    Args:
+        *args: Variable positional arguments.
+        **kwargs: Variable keyword arguments.
+    """
+    text = message.text.split(None, 1)[1] if len(message.text.split()) > 1 else ""
+    if not text:
+        await message.edit("Please provide text to generate carbon image.")
         return
-
-    await message.reply("Generating carbon image...")
-
-    response = requests.get("https://carbonara.solopov.dev/api/cook", json={"code": code})
-    if response.status_code == 200:
-        await message.reply_photo(response.content)
-    else:
-        await message.reply("Failed to generate carbon image.")
+    url = f"https://carbon.now.sh/?code={urllib.parse.quote(text)}"
+    await message.edit(f"**Carbon Image:**\n{url}")  # Check for edge cases
