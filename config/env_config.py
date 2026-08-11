@@ -1,4 +1,10 @@
-# Konfig
+"""Environment config."""
 import os
-API_ID=int(os.getenv("API_ID",0))
-API_HASH=os.getenv("API_HASH","")
+from typing import Optional
+
+def get_env(key:str,default:Optional[str]=None)->Optional[str]:
+ return os.getenv(key,default)
+
+def get_int_env(key:str,default:int=0)->int:
+ try:return int(os.getenv(key,str(default)))
+ except:return default

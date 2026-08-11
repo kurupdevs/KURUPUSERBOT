@@ -1,12 +1,4 @@
-# Constants and default values
-import os
-
-# Default prefix for commands
-DEFAULT_PREFIX = os.getenv("PREFIX", ".")
-
-# Version info
-VERSION = "1.0.0"
-
-# Timeouts
-DEFAULT_TIMEOUT = 30
-MAX_TIMEOUT = 300
+"""KURUPUSERBOT constants."""
+APP_NAME="KURUPUSERBOT"
+VERSION="2.0.0"
+SUPPORT_LINK="https://t.me/kurupdevs"
