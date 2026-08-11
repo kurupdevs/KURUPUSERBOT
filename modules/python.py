@@ -1,25 +1,26 @@
+import subprocess
 import sys
-import io
-import logging
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
-from config.constants import prefix
 
-@Client.on_message(filters.command("python", prefixes=prefix) & filters.me)
-async def python_command(client, message: Message):
-    code = message.text.split(None, 1)[1] if len(message.text.split()) > 1 else ""
-    if not code:
-        await message.edit("**Provide Python code to execute.**")
+
+async def setup(client: Client):
+    client.on_message(filters.command("python", prefixes=".") & filters.me)(python_handler)
+
+
+async def python_handler(client: Client, message: Message):
+    code = message.text.split(None, 1)
+    if len(code) < 2:
+        await message.edit("**Usage:** `.python <code>`")
         return
-    old_stdout = sys.stdout
-    sys.stdout = io.StringIO()
     try:
-        exec(code)
-        output = sys.stdout.getvalue()
+        result = subprocess.run(
+            [sys.executable, "-c", code[1]],
+            capture_output=True, text=True, timeout=10
+        )
+        output = result.stdout or result.stderr
+        await message.edit(f"```\n{output[:2000]}\n```")
+    except subprocess.TimeoutExpired:
+        await message.edit("**Timeout!**")
     except Exception as e:
-        output = f"Error: {str(e)}"
-    finally:
-        sys.stdout = old_stdout
-    if len(output) > 4000:
-        output = output[:3997] + "..."
-    await message.edit(f"```\n{output}\n```")
+        await message.edit(f"**Error:** {e}")

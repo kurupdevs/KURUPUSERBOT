@@ -1,21 +1,18 @@
-import logging
-
-from pyrogram import filters
+import aiohttp
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
 
-# carbon: main entry point for this functionality
-@Client.on_message(filters.command("carbon", prefixes=prefix) & filters.me)
-async def carbon_command(client, message: Message):
-    """Execute carbon_command with the provided parameters.
-    
-    Args:
-        *args: Variable positional arguments.
-        **kwargs: Variable keyword arguments.
-    """
-    text = message.text.split(None, 1)[1] if len(message.text.split()) > 1 else ""
-    if not text:
-        await message.edit("Please provide text to generate carbon image.")
+async def setup(client: Client):
+    client.on_message(filters.command("carbon", prefixes=".") & filters.me)(carbon_handler)
+
+
+async def carbon_handler(client: Client, message: Message):
+    text = message.text.split(None, 1)
+    if len(text) < 2:
+        await message.edit("**Usage:** `.carbon <code>`")
         return
-    url = f"https://carbon.now.sh/?code={urllib.parse.quote(text)}"
-    await message.edit(f"**Carbon Image:**\n{url}")  # Check for edge cases
+    code = text[1]
+    await message.edit("**Generating carbon...**")
+    url = f"https://carbon.now.sh/?code={code.replace(' ', '+')}"
+    await message.edit(f"**Carbon URL:** {url}")

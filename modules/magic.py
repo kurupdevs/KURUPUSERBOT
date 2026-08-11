@@ -1,22 +1,22 @@
 import random
-import logging
-
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config.constants import prefix
+MAGIC_RESPONSES = [
+    "🎱 Yes definitely",
+    "🎱 No way",
+    "🎱 Ask again later",
+    "🎱 Most likely",
+    "🎱 Don't count on it",
+    "🎱 Signs point to yes",
+    "🎱 Very doubtful",
+]
 
 
-MAGIC_RESPONSES = ["🎱 Yes", "🎱 No", "🎱 Maybe", "🎱 Definitely", "🎱 Not sure"]
+async def setup(client: Client):
+    client.on_message(filters.command("magic", prefixes=".") & filters.me)(magic_handler)
 
-# magic: utility to handle the given operation
-@Client.on_message(filters.command("magic", prefixes=prefix) & filters.me)
-async def magic_command(client, message: Message):
-    """Execute magic_command with the provided parameters.
-    
-    Args:
-        *args: Variable positional arguments.
-        **kwargs: Variable keyword arguments.
-    """
-    response = random.choice(MAGIC_RESPONSES)
-    await message.edit(f"🎩 **Magic 8-Ball says:** {response}")  # Validate input
+
+async def magic_handler(client: Client, message: Message):
+    question = message.text.split(None, 1)[1] if len(message.text.split()) > 1 else "???"
+    await message.edit(f"**Q:** {question}\n**A:** {random.choice(MAGIC_RESPONSES)}")
