@@ -1,55 +1,25 @@
-#  KurupUserbot - telegram userbot
-#  Copyright (C) 2020-present Kurup Userbot Organization
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 import asyncio
-
-from pyrogram import Client, filters
+import logging
+from pyrogram import filters
 from pyrogram.types import Message
+from config.constants import prefix
 
-from utils import modules_help, prefix
-from utils.scripts import with_reply
-
-
-@Client.on_message(filters.command("del", prefix) & filters.me)
-async def del_msg(_, message: Message):
+@Client.on_message(filters.command("purge", prefixes=prefix) & filters.me)
+async def purge_command(client, message: Message):
+    if not message.reply_to_message:
+        await message.edit("**Reply to a message to start purging.**")
+        return
+    chat_id = message.chat.id
+    start_msg = message.reply_to_message.id
+    end_msg = message.id
     await message.delete()
-    await message.reply_to_message.delete()
-
-
-@Client.on_message(filters.command("purge", prefix) & filters.me)
-@with_reply
-async def purge(client: Client, message: Message):
-    chunk = []
-    async for msg in client.get_chat_history(
-        chat_id=message.chat.id,
-        limit=message.id - message.reply_to_message.id + 1,
-    ):
-        if msg.id < message.reply_to_message.id:
-            break
-        chunk.append(msg.id)
-        if len(chunk) >= 100:
-            await client.delete_messages(message.chat.id, chunk)
-            chunk.clear()
-            await asyncio.sleep(1)
-
-    if len(chunk) > 0:
-        await client.delete_messages(message.chat.id, chunk)
-
-
-modules_help["purge"] = {
-    "purge [reply]": "Purge (delete all messages) chat from replied message to last",
-    "del [reply]": "Delete replied message",
-}
+    deleted = 0
+    for msg_id in range(start_msg, end_msg + 1):
+        try:
+            await client.delete_messages(chat_id, msg_id)
+            deleted += 1
+        except Exception:
+            pass
+    status = await client.send_message(chat_id, f"**Purged {deleted} messages.**")
+    await asyncio.sleep(3)
+    await status.delete()

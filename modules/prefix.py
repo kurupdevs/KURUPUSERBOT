@@ -1,50 +1,19 @@
-#  KurupUserbot - telegram userbot
-#  Copyright (C) 2020-present Kurup Userbot Organization
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-from pyrogram import Client, filters
+import logging
+from pyrogram import filters
 from pyrogram.types import Message
-
-from utils import modules_help, prefix
+from config.constants import prefix
 from utils.db import db
-from utils.scripts import restart
 
+@Client.on_message(filters.command("setprefix", prefixes=prefix) & filters.me)
+async def set_prefix_command(client, message: Message):
+    new_prefix = message.text.split(None, 1)[1] if len(message.text.split()) > 1 else None
+    if not new_prefix:
+        await message.edit("**Usage:** `.setprefix <new_prefix>`")
+        return
+    db.set("core.config", "prefix", new_prefix)
+    await message.edit(f"**Prefix updated to:** `{new_prefix}`")
 
-@Client.on_message(filters.command(["sp", "setprefix"], prefix) & filters.me)
-async def setprefix(_, message: Message):
-    if len(message.command) > 1:
-        pref = message.command[1]
-        db.set("core.main", "prefix", pref)
-        await message.edit(
-            f"<b>Prefix [ <code>{pref}</code> ] is set!\nRestarting...</b>"
-        )
-        db.set(
-            "core.updater",
-            "restart_info",
-            {
-                "type": "restart",
-                "chat_id": message.chat.id,
-                "message_id": message.id,
-            },
-        )
-        restart()
-    else:
-        await message.edit("<b>The prefix must not be empty!</b>")
-
-
-modules_help["prefix"] = {
-    "sp [prefix]": "Set custom prefix",
-    "setprefix [prefix]": "Set custom prefix",
-}
+@Client.on_message(filters.command("prefix", prefixes=prefix) & filters.me)
+async def get_prefix_command(client, message: Message):
+    current = db.get("core.config", "prefix", prefix)
+    await message.edit(f"**Current prefix:** `{current}`")

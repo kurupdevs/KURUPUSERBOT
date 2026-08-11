@@ -1,32 +1,15 @@
-#  KurupUserbot - telegram userbot
-#  Copyright (C) 2020-present Kurup Userbot Organization
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
+import time
+import logging
 
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
-from pyrogram import Client, filters
+from pyrogram import filters
 from pyrogram.types import Message
 
-from utils import modules_help, prefix
+from config.constants import prefix
 
 
-@Client.on_message(filters.command(["ping", "p"], prefix) & filters.me)
-async def ping(client: Client, message: Message):
-    latency = await client.ping()
-    await message.edit(f"<b>Pong! {latency}ms</b>")
-
-
-modules_help["ping"] = {
-    "ping": "Check ping to Telegram servers",
-}
+@Client.on_message(filters.command("ping", prefixes=prefix) & filters.me)
+async def ping_command(client, message: Message):
+    start = time.perf_counter()
+    msg = await message.edit("**Pong!** 🏓")
+    elapsed = time.perf_counter() - start
+    await msg.edit(f"**Pong!** 🏓\nResponse time: `{elapsed:.3f}s`")
