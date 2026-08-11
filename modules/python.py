@@ -1,22 +1,9 @@
-"""Python module — execute Python code via the bot."""
-
+# Python execution module
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-
 @Client.on_message(filters.command("python"))
-async def python_command(client: Client, message: Message) -> None:
-    """Run Python code and return the result.
-
-    Usage: /python <code>
-
-    Executes the given Python expression with restricted globals
-    and returns the result.
-
-    Args:
-        client: The Pyrogram client.
-        message: The trigger message containing the Python code.
-    """
+async def python_command(client: Client, message: Message):
     code = " ".join(message.command[1:])
     if not code:
         await message.reply("Usage: /python <code>")

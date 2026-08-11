@@ -1,19 +1,10 @@
-"""SendMod module — send installed modules to the chat."""
-
-import os
-
+# Sendmod module
 from pyrogram import Client, filters
 from pyrogram.types import Message
-
+import os
 
 @Client.on_message(filters.command("sendmod"))
-async def sendmod_command(client: Client, message: Message) -> None:
-    """Send an installed module file as an attachment.
-
-    Usage: /sendmod <module_name>
-
-    Sends the .py file from the modules directory as a document.
-    """
+async def sendmod_command(client: Client, message: Message):
     name = " ".join(message.command[1:])
     path = f"modules/{name}.py"
     if os.path.exists(path):

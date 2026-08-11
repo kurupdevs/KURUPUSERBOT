@@ -1,17 +1,10 @@
-"""Laugh module — send random laughing reactions."""
-
-import random
-
+# Laugh module
 from pyrogram import Client, filters
 from pyrogram.types import Message
+import random
 
-_LAUGHS = ["Ha", "He", "Ho", "Lol", "Xdd"]
-
+laughs = ["Ha", "He", "Ho", "Lol", "Xdd"]
 
 @Client.on_message(filters.command("laugh"))
-async def laugh_command(client: Client, message: Message) -> None:
-    """Send a random laughing expression.
-
-    Picks a random laugh string from the collection and replies.
-    """
-    await message.reply(random.choice(_LAUGHS))
+async def laugh_command(client: Client, message: Message):
+    await message.reply(random.choice(laughs))
