@@ -1,54 +1,22 @@
-#  KurupUserbot - telegram userbot
-#  Copyright (C) 2020-present Kurup Userbot Organization
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 import asyncio
-
-from pyrogram import Client, filters
+import logging
+from pyrogram import filters
 from pyrogram.types import Message
+from config.constants import prefix
 
-from utils import modules_help, prefix
-
-commands = ["spam", "statspam", "slowspam", "fastspam"]
-
-
-@Client.on_message(filters.command(commands, prefix) & filters.me)
-async def spam(client: Client, message: Message):
-    amount = int(message.command[1])
-    text = " ".join(message.command[2:])
-
-    cooldown = {"spam": 0.15, "statspam": 0.1, "slowspam": 0.9, "fastspam": 0}
-
+@Client.on_message(filters.command("spam", prefixes=prefix) & filters.me)
+async def spam_command(client, message: Message):
+    args = message.text.split(None, 2)
+    if len(args) < 3:
+        await message.edit("**Usage:** `.spam <count> <text>`")
+        return
+    try:
+        count = int(args[1])
+    except ValueError:
+        await message.edit("**Invalid count. Must be a number.**")
+        return
+    text = args[2]
     await message.delete()
-
-    for _msg in range(amount):
-        if message.reply_to_message:
-            sent = await message.reply_to_message.reply(text)
-        else:
-            sent = await client.send_message(message.chat.id, text)
-
-        if message.command[0] == "statspam":
-            await asyncio.sleep(0.1)
-            await sent.delete()
-
-        await asyncio.sleep(cooldown[message.command[0]])
-
-
-modules_help["spam"] = {
-    "spam [amount] [text]": "Start spam",
-    "statspam [amount] [text]": "Send and delete",
-    "fastspam [amount] [text]": "Start fast spam",
-    "slowspam [amount] [text]": "Start slow spam",
-}
+    for _ in range(min(count, 50)):
+        await client.send_message(message.chat.id, text)
+        await asyncio.sleep(0.5)

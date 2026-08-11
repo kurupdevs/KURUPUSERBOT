@@ -1,40 +1,13 @@
-#  KurupUserbot - telegram userbot
-#  Copyright (C) 2020-present Kurup Userbot Organization
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
+import logging
+from pyrogram import filters
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from config.constants import prefix
 
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-from datetime import datetime
-
-from pyrogram import Client, filters
-from pyrogram.types import Message
-
-from utils import modules_help, prefix
-
-
-@Client.on_message(filters.command("support", prefix) & filters.me)
-async def support(_, message: Message):
-    try:
-        await message.edit(
-            "<b>KurupUserbot Support\n\n"
-            "Channel: @kurupuserbot\n"
-            "Chat: @kurupub_chat\n"
-            "Custom Modules: @kurupub_modules</b>"
-        )
-    except Exception as e:
-        await message.edit(f"<b>Error:</b> {e}")
-
-
-modules_help["support"] = {
-    "support": "Show support channels",
-}
+@Client.on_message(filters.command("support", prefixes=prefix) & filters.me)
+async def support_command(client, message: Message):
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("💬 Support Group", url="https://t.me/kurup_support")],
+        [InlineKeyboardButton("📢 Updates Channel", url="https://t.me/kurup_updates")],
+        [InlineKeyboardButton("👤 Owner", url="https://t.me/kurupdevs")],
+    ])
+    await message.edit("**KurupUserbot Support**\n\nNeed help? Join our community!", reply_markup=keyboard)

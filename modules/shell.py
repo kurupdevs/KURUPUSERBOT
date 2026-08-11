@@ -1,64 +1,20 @@
-#  KurupUserbot - telegram userbot
-#  Copyright (C) 2020-present Kurup Userbot Organization
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-import os
-from subprocess import PIPE, Popen, TimeoutExpired
-from time import perf_counter
-
-from pyrogram import Client, filters
-from pyrogram.errors import MessageTooLong
+import subprocess
+import logging
+from pyrogram import filters
 from pyrogram.types import Message
+from config.constants import prefix
 
-from utils import modules_help, prefix
-
-
-@Client.on_message(filters.command(["shell", "sh"], prefix) & filters.me)
-async def shell(_, message: Message):
-    if len(message.command) < 2:
-        return await message.edit("<b>Specify the command in message text</b>")
-    cmd_text = message.text.split(maxsplit=1)[1]
-    cmd_args = cmd_text.split()
-    cmd_obj = Popen(
-        cmd_args,
-        stdout=PIPE,
-        stderr=PIPE,
-        text=True,
-    )
-
-    char = "#" if os.getuid() == 0 else "$"
-    text = f"<b>{char}</b> <code>{cmd_text}</code>\n\n"
-
-    await message.edit(text + "<b>Running...</b>")
+@Client.on_message(filters.command("shell", prefixes=prefix) & filters.me)
+async def shell_command(client, message: Message):
+    cmd = message.text.split(None, 1)[1] if len(message.text.split()) > 1 else ""
+    if not cmd:
+        await message.edit("**Usage:** `.shell <command>`")
+        return
     try:
-        start_time = perf_counter()
-        stdout, stderr = cmd_obj.communicate(timeout=60)
-    except TimeoutExpired:
-        text += "<b>Timeout expired (60 seconds)</b>"
-    else:
-        stop_time = perf_counter()
-        if stdout:
-            text += f"<b>Output:</b>\n<code>{stdout}</code>\n\n"
-        if stderr:
-            text += f"<b>Error:</b>\n<code>{stderr}</code>\n\n"
-        text += f"<b>Completed in {round(stop_time - start_time, 5)} seconds with code {cmd_obj.returncode}</b>"
-    try:
-        await message.edit(text)
-    except MessageTooLong:
-        await message.edit(text[:-100])
-    cmd_obj.kill()
-
-
-modules_help["shell"] = {"sh [command]*": "Execute command in shell"}
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=30)
+        output = result.stdout or result.stderr
+        if len(output) > 4000:
+            output = output[:3997] + "..."
+        await message.edit(f"**Shell Output:**\n```\n{output}\n```")
+    except subprocess.TimeoutExpired:
+        await message.edit("**Command timed out.**")
