@@ -1,13 +1,6 @@
-import logging
-from pyrogram import filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from config.constants import prefix
+from pyrogram import Client,filters
 
-@Client.on_message(filters.command("support", prefixes=prefix) & filters.me)
-async def support_command(client, message: Message):
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("💬 Support Group", url="https://t.me/kurup_support")],
-        [InlineKeyboardButton("📢 Updates Channel", url="https://t.me/kurup_updates")],
-        [InlineKeyboardButton("👤 Owner", url="https://t.me/kurupdevs")],
-    ])
-    await message.edit("**KurupUserbot Support**\n\nNeed help? Join our community!", reply_markup=keyboard)
+SUPPORT_LINK="https://t.me/kurupdevs"
+
+async def setup(c):c.on_message(filters.command("support",prefixes=".")&filters.me)(h)
+async def h(c,m):await m.edit(f"**Support:** {SUPPORT_LINK}")

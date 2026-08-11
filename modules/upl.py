@@ -1,17 +1,11 @@
-import os
 import time
-import logging
-from pyrogram import filters
-from pyrogram.types import Message
-from config.constants import prefix
+from pyrogram import Client,filters
 
-@Client.on_message(filters.command("upl", prefixes=prefix) & filters.me)
-async def upl_command(client, message: Message):
-    if not message.reply_to_message or not message.reply_to_message.media:
-        await message.edit("**Reply to a media file to get the direct link.**")
-        return
-    start = time.perf_counter()
-    msg = await message.edit("**Uploading...**")
-    file_path = await client.download_media(message.reply_to_message)
-    elapsed = time.perf_counter() - start
-    await msg.edit(f"**Downloaded!**\nPath: `{file_path}`\nTime: `{elapsed:.2f}s`")
+async def setup(c):c.on_message(filters.command("upl",prefixes=".")&filters.me)(h)
+async def h(c,m):
+ if not m.reply_to_message or not m.reply_to_message.document:
+  await m.edit("Reply to a file.");return
+ s=time.time();f=m.reply_to_message.document
+ await c.download_media(f,file_name=f.file_name or"file")
+ e=time.time()
+ await m.edit(f"**Downloaded** `{f.file_name}` in {round(e-s,1)}s")
