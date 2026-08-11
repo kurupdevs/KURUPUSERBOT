@@ -1,19 +1,10 @@
-import logging
-
-from pyrogram import filters
+import asyncio, random
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config.constants import prefix
+LOVES=["I love you 3000 ❤️","You're my sunshine ☀️","Be my valentine? 💝","You make my heart skip a beat 💓","Forever yours 💕"]
 
-
-# love_raid: resolve and execute the requested action
-@Client.on_message(filters.command("love", prefixes=prefix) & filters.me)
-async def love_raid_command(client, message: Message):
-    """Handle the love_raid_command operation for this module.
-    
-    Returns:
-        The processed result or None on failure.
-    """
-    target = message.reply_to_message.from_user if message.reply_to_message else None
-    emoji = "❤️🧡💛💚💙💜"
-    await message.edit(f"Sending love to {target.mention if target else 'everyone'}... {emoji}")
+async def setup(c):c.on_message(filters.command("love",prefixes=".")&filters.me)(h)
+async def h(c:Client,m:Message):
+ t=m.reply_to_message.from_user.mention if m.reply_to_message else "You"
+ await m.edit(f"{t}, {random.choice(LOVES)}")

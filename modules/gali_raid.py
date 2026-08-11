@@ -1,20 +1,10 @@
-import logging
-
-from pyrogram import filters
+import asyncio, random
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config.constants import prefix
+GALIS = ["Teri shakal dekh ke lagta hai bhagwan ne tujhe banate waqt chhutti le li thi.","Tu insaan hai ya dharti pe bojh?","Tera dimaag hai ya khali dibba?","Apni aukat mein reh."]
 
-
-# gali_raid: resolve and execute the requested action
-@Client.on_message(filters.command("gali", prefixes=prefix) & filters.me)
-async def gali_raid_command(client, message: Message):
-    """Execute gali_raid_command with the provided parameters.
-    
-    Args:
-        *args: Variable positional arguments.
-        **kwargs: Variable keyword arguments.
-    """
-    if message.reply_to_message:
-        target = message.reply_to_message.from_user
-        await message.edit(f"Raid initiated on {target.mention}...")  # Handle result
+async def setup(c):c.on_message(filters.command("gali",prefixes=".")&filters.me)(h)
+async def h(c:Client,m:Message):
+ t=m.reply_to_message.from_user.mention if m.reply_to_message else "User"
+ await m.edit(f"{t}, {random.choice(GALIS)}")
