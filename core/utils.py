@@ -1,6 +1,19 @@
-import asyncio
+import os
+import subprocess
+import logging
 
-async def animate_text(message, frames, delay=0.2):
-    for frame in frames:
-        await message.edit(frame)
-        await asyncio.sleep(delay)
+
+def run_command(cmd, timeout=30):
+    """Execute a shell command and return code, stdout, stderr."""
+    try:
+        result = subprocess.run(
+            cmd,
+            shell=True,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+        )
+        return result.returncode, result.stdout, result.stderr
+    except subprocess.TimeoutExpired:
+        logging.warning(f"Command timed out: {cmd}")
+        return -1, "", "Timeout"
