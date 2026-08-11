@@ -1,14 +1,15 @@
 import os
-import logging
-from pyrogram import filters
-from pyrogram.types import Message
-from config.constants import prefix
+from pyrogram import Client,filters
 
-@Client.on_message(filters.command("thumbnail", prefixes=prefix) & filters.me)
-async def thumbnail_command(client, message: Message):
-    if not message.reply_to_message or not message.reply_to_message.photo:
-        await message.edit("**Reply to an image to set as thumbnail.**")
-        return
-    photo = message.reply_to_message.photo
-    file_path = await client.download_media(photo, file_name="thumbnail.jpg")
-    await message.edit(f"**Thumbnail saved!** `{file_path}`")
+TD="thumbnails"
+
+async def setup(c):
+ c.on_message(filters.command("savethumb",prefixes=".")&filters.me)(h)
+
+async def h(c,m):
+ if not m.reply_to_message or not m.reply_to_message.photo:
+  await m.edit("Reply to a photo to save as thumbnail.");return
+ os.makedirs(TD,exist_ok=True)
+ p=os.path.join(TD,f"{m.chat.id}.jpg")
+ await c.download_media(m.reply_to_message.photo,file_name=p)
+ await m.edit("**Thumbnail saved!**")
