@@ -1,26 +1,23 @@
-import logging
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
-from pyrogram import filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+HELP_TEXT = """
+**Available Commands:**
 
-from config.constants import prefix
+• `.afk` - Set AFK status
+• `.alive` - Check bot uptime
+• `.ping` - Check latency
+• `.spam` - Spam messages
+• `.say` - Echo message
+• `.purge` - Delete messages
+• `.shayari` - Get random shayari
+• `.help` - Show this menu
+"""
 
 
-# help: utility to handle the given operation
-@Client.on_message(filters.command("help", prefixes=prefix) & filters.me)
-async def help_command(client, message: Message):
-    """Execute help_command with the provided parameters.
-    
-    Args:
-        *args: Variable positional arguments.
-        **kwargs: Variable keyword arguments.
-    """
-    help_text = (
-        "**KurupUserbot Help Menu**\n\n"
-        "• `.ping` - Check bot response\n"
-        "• `.alive` - Check if bot is alive\n"
-        "• `.afk` - Set AFK status\n"
-        "• `.hack` - Fake hack animation\n"
-        "• `.help` - Show this menu\n"
-    )
-    await message.edit(help_text)  # Ensure proper handling
+async def setup(client: Client):
+    client.on_message(filters.command("help", prefixes=".") & filters.me)(help_handler)
+
+
+async def help_handler(client: Client, message: Message):
+    await message.edit(HELP_TEXT)

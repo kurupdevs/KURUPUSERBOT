@@ -1,22 +1,23 @@
 import asyncio
-import logging
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
-from config.constants import prefix
 
-@Client.on_message(filters.command("spam", prefixes=prefix) & filters.me)
-async def spam_command(client, message: Message):
+
+async def setup(client: Client):
+    client.on_message(filters.command("spam", prefixes=".") & filters.me)(spam_handler)
+
+
+async def spam_handler(client: Client, message: Message):
     args = message.text.split(None, 2)
     if len(args) < 3:
         await message.edit("**Usage:** `.spam <count> <text>`")
         return
     try:
-        count = int(args[1])
+        count = min(int(args[1]), 50)
     except ValueError:
-        await message.edit("**Invalid count. Must be a number.**")
+        await message.edit("**Invalid count.**")
         return
-    text = args[2]
     await message.delete()
-    for _ in range(min(count, 50)):
-        await client.send_message(message.chat.id, text)
-        await asyncio.sleep(0.5)
+    for _ in range(count):
+        await client.send_message(message.chat.id, args[2])
+        await asyncio.sleep(0.4)

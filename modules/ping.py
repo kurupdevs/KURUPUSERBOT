@@ -1,15 +1,14 @@
 import time
-import logging
-
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config.constants import prefix
+
+async def setup(client: Client):
+    client.on_message(filters.command("ping", prefixes=".") & filters.me)(ping_handler)
 
 
-@Client.on_message(filters.command("ping", prefixes=prefix) & filters.me)
-async def ping_command(client, message: Message):
-    start = time.perf_counter()
-    msg = await message.edit("**Pong!** 🏓")
-    elapsed = time.perf_counter() - start
-    await msg.edit(f"**Pong!** 🏓\nResponse time: `{elapsed:.3f}s`")
+async def ping_handler(client: Client, message: Message):
+    start = time.time()
+    msg = await message.edit("**Pong!**")
+    end = time.time()
+    await msg.edit(f"**Pong!** `{round((end - start) * 1000, 2)}ms`")

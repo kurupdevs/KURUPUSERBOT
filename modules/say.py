@@ -1,13 +1,15 @@
-import logging
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
-from config.constants import prefix
 
-@Client.on_message(filters.command("say", prefixes=prefix) & filters.me)
-async def say_command(client, message: Message):
-    text = message.text.split(None, 1)[1] if len(message.text.split()) > 1 else ""
-    if not text:
-        await message.edit("**Provide text to say.**")
+
+async def setup(client: Client):
+    client.on_message(filters.command("say", prefixes=".") & filters.me)(say_handler)
+
+
+async def say_handler(client: Client, message: Message):
+    text = message.text.split(None, 1)
+    if len(text) < 2:
+        await message.edit("**Usage:** `.say <text>`")
         return
     await message.delete()
-    await client.send_message(message.chat.id, text)
+    await client.send_message(message.chat.id, text[1])
