@@ -1,22 +1,17 @@
 import random
-import logging
-
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config.constants import prefix
+LAUGHS = [
+    "😂😂😂", "🤣🤣🤣", "😆😆😆", "😹😹😹",
+    "LMAO", "ROFL", "LOLOL", "HAHAHA",
+]
 
 
-LAUGH_LIST = ["😂", "🤣", "😆", "😄", "😁", "😹", "💀"]
+async def setup(client: Client):
+    client.on_message(filters.command("laugh", prefixes=".") & filters.me)(laugh_handler)
 
-# laugh: main entry point for this functionality
-@Client.on_message(filters.command("laugh", prefixes=prefix) & filters.me)
-async def laugh_command(client, message: Message):
-    """Execute laugh_command with the provided parameters.
-    
-    Args:
-        *args: Variable positional arguments.
-        **kwargs: Variable keyword arguments.
-    """
-    laugh = random.choice(LAUGH_LIST) * random.randint(3, 10)
-    await message.edit(laugh)  # Clean up after
+
+async def laugh_handler(client: Client, message: Message):
+    count = min(int(message.text.split()[-1]) if message.text.split()[-1].isdigit() else 1, 5)
+    await message.edit(random.choice(LAUGHS) * count)
