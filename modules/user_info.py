@@ -1,7 +1,9 @@
-from pyrogram import Client,filters
+# User info module
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
-async def setup(c):c.on_message(filters.command("info",prefixes=".")&filters.me)(h)
-async def h(c,m):
- u=m.reply_to_message.from_user if m.reply_to_message else m.from_user
- t=f"**User Info:**\nName: {u.first_name}\nID: `{u.id}`\nUsername: @{u.username or 'None'}"
- await m.edit(t)
+@Client.on_message(filters.command("info"))
+async def info_command(client: Client, message: Message):
+    user = message.from_user
+    info_text = f"Name: {user.first_name}\nID: {user.id}"
+    await message.reply(info_text)
