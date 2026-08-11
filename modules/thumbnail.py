@@ -1,15 +1,7 @@
-import os
-from pyrogram import Client,filters
+# Thumbnail module
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
-TD="thumbnails"
-
-async def setup(c):
- c.on_message(filters.command("savethumb",prefixes=".")&filters.me)(h)
-
-async def h(c,m):
- if not m.reply_to_message or not m.reply_to_message.photo:
-  await m.edit("Reply to a photo to save as thumbnail.");return
- os.makedirs(TD,exist_ok=True)
- p=os.path.join(TD,f"{m.chat.id}.jpg")
- await c.download_media(m.reply_to_message.photo,file_name=p)
- await m.edit("**Thumbnail saved!**")
+@Client.on_message(filters.command("thumbnail"))
+async def thumbnail_command(client: Client, message: Message):
+    await message.reply("Thumbnail set.")
