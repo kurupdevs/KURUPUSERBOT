@@ -1,5 +1,6 @@
 # KurupUserbot - Main Entry
 # A powerful Telegram userbot
+# Copyright (c) 2024 KurupDevs
 
 import asyncio
 import os
@@ -17,6 +18,7 @@ app = Client(
 )
 
 async def main():
+    """Start the userbot."""
     await app.start()
     print("KurupUserbot started!")
     await asyncio.Event().wait()
