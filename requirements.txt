@@ -2,4 +2,4 @@ python-dotenv
 pyrogram
 psutil
 pillow
-# Kurup deps
+# Packages
