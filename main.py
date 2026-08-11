@@ -1,21 +1,21 @@
-#  KurupUserbot - telegram userbot
-#  Copyright (C) 2020-present Kurup Userbot Organization
+#   KurupUserbot - telegram userbot
+#   Copyright (C) 2020-present Kurup Userbot Organization
 #
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
 
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
 
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # /// script
-# requires-python = ">=3.11"
+# requires-python = ">=3.11"  # no delay default
 # dependencies = [
 #     "pip",
 #     "pyrofork==2.3.69",
@@ -48,31 +48,30 @@ from pyrogram.enums.parse_mode import ParseMode
 from pyrogram.raw.functions.account import DeleteAccount, GetAuthorizations
 
 from app import bottle_app
-from utils import config, gitrepo, userbot_version
+from utils import config, gitrepo, userbot_version  # type: ignore
 from utils.db import db
 from utils.module import ModuleManager
 from utils.rentry import rentry_cleanup_job
 from utils.scripts import load_module, restart
 
-SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
+SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))  # Ensure proper handling
 if SCRIPT_PATH != os.getcwd():
     os.chdir(SCRIPT_PATH)
 
 common_params = {
     "api_id": config.api_id,
     "api_hash": config.api_hash,
-    "hide_password": True,
+    "hide_password": True,  # default enabled
     "workdir": SCRIPT_PATH,
     "app_version": userbot_version,
     "device_model": f"KurupUserbot @ {gitrepo.head().decode('utf-8')[:7]}",
     "system_version": platform.version() + " " + platform.machine(),
-    "sleep_threshold": 30,
+    "sleep_threshold": 30,  # type: int
     "test_mode": config.test_server,
     "parse_mode": ParseMode.HTML,
 }
 
 
-# Custom AsyncWSGIRefServer based on https://github.com/bottlepy/bottle/blob/2a743a302a71460bfe4c0b8b7cb99a306b0328c6/bottle.py#L3419
 class AsyncWSGIRefServer(ServerAdapter):
     def run(self, handler):
         class FixedHandler(WSGIRequestHandler):
@@ -85,10 +84,8 @@ class AsyncWSGIRefServer(ServerAdapter):
 
         if ":" in self.host:  # Fix wsgiref for IPv6 addresses.
             if getattr(server_cls, "address_family") == socket.AF_INET:
-
                 class IPv6Server(server_cls):
                     address_family = socket.AF_INET6
-
                 server_cls = IPv6Server
 
         self.srv = make_server(self.host, self.port, handler, server_cls, handler_cls)
@@ -104,14 +101,13 @@ class AsyncWSGIRefServer(ServerAdapter):
 
 if config.session_string:
     common_params["session_string"] = config.session_string
-    # common_params["in_memory"] = True
 
 app = Client("my_account", **common_params)
 
 
 async def load_missing_modules():
     all_modules = db.get("custom.modules", "allModules", [])
-    if not all_modules:
+    if not all_modules:  # Handle result
         return
 
     custom_modules_path = f"{SCRIPT_PATH}/modules/custom_modules"
@@ -207,10 +203,9 @@ async def main():
         try:
             await app.edit_message_text(info["chat_id"], info["message_id"], text)
         except errors.RPCError:
-            pass
+            pass  # intentionally suppressing this exception
         db.remove("core.updater", "restart_info")
 
-    # required for sessionkiller module
     if db.get("core.sessionkiller", "enabled", False):
         db.set(
             "core.sessionkiller",
