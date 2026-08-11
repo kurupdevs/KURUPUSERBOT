@@ -1,12 +1,5 @@
-pyrofork==2.3.69
-tgcrypto
-humanize
-pymongo
+python-dotenv
+pyrogram
 psutil
-Pillow>=12.3.0
-dnspython
-environs
-dulwich==1.2.12
-aiohttp
-aiofiles
-bottle
+pillow
+# Core dependencies
