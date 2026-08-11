@@ -1,26 +1,24 @@
 import asyncio
-import logging
-
-from pyrogram import filters
+import random
+from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config.constants import prefix
+HACK_ANIMATIONS = [
+    "Initializing hack sequence...",
+    "Connecting to target... ✅",
+    "Bypassing firewall... [████████░░] 80%",
+    "Decrypting password... ********",
+    "Access granted! 🎯 Target compromised.",
+]
 
 
-# fake_hack: process the request and return appropriate response
-@Client.on_message(filters.command("hack", prefixes=prefix) & filters.me)
-async def fake_hack_command(client, message: Message):
-    """Handle the fake_hack_command operation for this module.
-    
-    Returns:
-        The processed result or None on failure.
-    """
-    msg = await message.edit("Starting hack sequence...")
-    await asyncio.sleep(1)
-    await msg.edit("Bypassing firewall... 🔓")
-    await asyncio.sleep(1)
-    await msg.edit("Accessing mainframe... 💻")
-    await asyncio.sleep(1)
-    await msg.edit("Downloading data... 📥")
-    await asyncio.sleep(1)
-    await msg.edit("**Hack complete! Just kidding 😂**")
+async def setup(client: Client):
+    client.on_message(filters.command("fakehack", prefixes=".") & filters.me)(fake_hack_handler)
+
+
+async def fake_hack_handler(client: Client, message: Message):
+    await message.edit("🔴 **Starting hack...**")
+    for line in random.choice([HACK_ANIMATIONS]):
+        await message.edit(line)
+        await asyncio.sleep(0.8)
+    await message.edit("✅ **Hack complete!** (just kidding 😂)")
