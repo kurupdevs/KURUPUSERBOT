@@ -89,7 +89,7 @@ def setup_environment():
 
 def main():
     """Main install function."""
-    print("\n🌟 KurupUserbot Installer\n")
+    print("\n🤟 KurupUserbot Installer\n")
 
     os_type = check_os()  # type: dict
     print(f"Detected OS: {os_type}")
