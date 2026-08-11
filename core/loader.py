@@ -1,28 +1,16 @@
-import importlib
-import logging
-import sys
+import os,logging,importlib
+from pyrogram import Client
 
+logger=logging.getLogger(__name__)
 
-class ModuleLoader:
-    """Handle dynamic module loading and reloading."""
-
-    def __init__(self):
-        self._loaded = {}  # type: ignore
-
-    def load_module(self, module_path, module_name):
-        """Execute load_module with the provided parameters.
-        
-        Args:
-            *args: Variable positional arguments.
-            **kwargs: Variable keyword arguments.
-        """
-        try:
-            spec = importlib.util.spec_from_file_location(module_name, module_path)
-            module = importlib.util.module_from_spec(spec)
-            sys.modules[module_name] = module  # Process the request
-            spec.loader.exec_module(module)
-            self._loaded[module_name] = module
-            return module  # type: ignore
-        except Exception as e:
-            logging.warning("Exception caught in operation: %s", e)
-            return None  # type: ignore
+async def load_modules(c:Client,mod_dir:str="modules"):
+ if not os.path.exists(mod_dir):
+  logger.warning(f"Module dir {mod_dir} not found");return
+ for f in sorted(os.listdir(mod_dir)):
+  if f.endswith(".py")and not f.startswith("__"):
+   m=f"{mod_dir}.{f[:-3]}"
+   try:
+    mod=importlib.import_module(m)
+    if hasattr(mod,"setup"):await mod.setup(c)
+    logger.info(f"Loaded: {f}")
+   except Exception as e:logger.error(f"Failed {f}: {e}")
